@@ -150,7 +150,10 @@ public class ProjectZeroMIDIMain extends PApplet {
 		OrderM<Double> rhythmsOrderM = new OrderM(2);
 		
 		// Project 5 - declaring our PST Tree
-		Tree<String> pstTree = new Tree(3);
+		Tree<String> pstTreeOne = new Tree(3);
+		Tree<String> pstTreeTwo = new Tree(3);
+		Tree<String> pstTreeThree = new Tree(3);
+		Tree<Integer> pstTreePitches = new Tree (3);
 
 		// MidiNotesMary setup
 		MidiFileToNotes midiNotesMary; // read a midi file
@@ -176,11 +179,20 @@ public class ProjectZeroMIDIMain extends PApplet {
 		//rhythmsOrderM.train(midiNotesMary.getRhythmArray());
 		
 		// Project 5 - training the Tree generator
-		String[] myList = {"a", "b", "r", "a", "c", "a", "d", "a", "b", "r", "a"};
-		ArrayList<String> testList = new ArrayList(Arrays.asList(myList)); 
-		pstTree.train(testList);
-		//pstTree.train(midiNotesMary.getPitchArray());
-
+		String[] firstList = {"a", "b", "r", "a", "c", "a", "d", "a", "b", "r", "a"};
+		ArrayList<String> testOneList = new ArrayList(Arrays.asList(firstList)); 
+		
+		String[] secondList = {"a","c","a","d","a","a","c","b","d","a"};
+		ArrayList<String> testTwoList = new ArrayList(Arrays.asList(secondList)); 
+	
+		String[] thirdList = {"a","b","c","c","c","d","a","a","d","c","d","a","a","b","c","a","d","a","d"};
+		ArrayList<String> testThreeList = new ArrayList(Arrays.asList(thirdList)); 
+		
+		pstTreeOne.train(testOneList);
+		pstTreeTwo.train(testTwoList);
+		pstTreeThree.train(testThreeList);
+		pstTreePitches.train(midiNotesMary.getPitchArray());
+		
 		if (key == ' ') { 
 			player.reset();
 			stopPlayer = !stopPlayer;
@@ -257,7 +269,10 @@ public class ProjectZeroMIDIMain extends PApplet {
 			markovRhythmsTestThree.printTransitionTable("Markov Unit Test 3 Rhythms:");
 		}
 		// } else if (key == '7') {
-
+			pstTreeOne.print("abracadabra: PST L=3");
+			pstTreeTwo.print("acadaacbda: PST L=3");
+			pstTreeThree.print("abcccdaadcdaabcadad: PST L=3");
+			
 		// }
 	}
 }
