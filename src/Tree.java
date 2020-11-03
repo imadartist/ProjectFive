@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Tree<T> {
 //holds the root node and interacts with the tree via the root node. The tree does not perform actions of adding nodes or traversing the tree beyond its calls to the root node.
 
-	Node<T> root; //the root of the tree
+	Node<T> root = new Node(new ArrayList<T>()); //the root of the tree
 	int tree; //declare tree as a global variable
 	
 	Tree(int L) {
@@ -25,8 +25,11 @@ public class Tree<T> {
 			}
 		}
 	}
-	void print() {
+	void print(String s) {
 	//calls the root to print
+	System.out.println("---------------");
+	System.out.println(s);
+	System.out.println("---------------");
 	root.print();	
 	}
 	

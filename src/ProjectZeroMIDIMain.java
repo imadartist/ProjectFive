@@ -267,14 +267,14 @@ public class ProjectZeroMIDIMain extends PApplet {
 			// 20-note melodies
 			markovPitchesTestThree.printTransitionTable("Markov Unit Test 3 Pitches:");
 			markovRhythmsTestThree.printTransitionTable("Markov Unit Test 3 Rhythms:");
-		}
-		// } else if (key == '7') {
+		} else if (key == '7') {
+			//printing PST trees for different inputs that were trained on
 			pstTreeOne.print("abracadabra: PST L=3");
 			pstTreeTwo.print("acadaacbda: PST L=3");
 			pstTreeThree.print("abcccdaadcdaabcadad: PST L=3");
 			
-		// }
-	}
+		}
+}
 }
 		
 	
