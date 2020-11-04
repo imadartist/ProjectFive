@@ -17,13 +17,13 @@ public class Node<T> {
 		{
 			int i = 0;
 
-			while (i < children.size() && !found) {
+			while (i < children.size() && !found) { // If NOT found and the length of node’s tokenSequence is one less than this tokenSequence
 				i++;
 				found = children.get(i).addNode(node) ;
 
 			}
 			if (!found && (tokenSequence.size() == tokenSequence.size() - 1)) {
-				children.add(node);
+				children.add(node); // Add the node to our children array. Thus- found=true.
 				found = true;
 			}
 			 // 1. try to add the node to all the children nodes. the pseudo recursive
@@ -31,12 +31,7 @@ public class Node<T> {
 			// 2. Did one your child nodes add the node? **keep track of this via the found
 			// variable**
 			// if found set found to true found = true;
-// DEL		 if (!found && (tokenSequence.size() == tokenSequence.size() - 1)) { // If NOT found and the length of
-																					// node’s tokenSequence is one less
-																					// than this tokenSequence
-// DEL		{
-//			children.add(node); // Add the node to our children array. Thus- found=true.
-//		
+	
 		}
 		return found;
 	}
