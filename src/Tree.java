@@ -5,9 +5,12 @@ public class Tree<T> {
 
 	Node<T> root = new Node(new ArrayList<T>()); //the root of the tree
 	int tree; //declare tree as a global variable
+	float pMin;
+	int totalInputTokens; //the total number of input tokens
 	
-	Tree(int L) {
+	Tree(int L, float E) {
 		tree = L; // set tree equal to L, which is the maximum token sequence length (order length) the user will pass in
+		pMin = E;
 	}
 
 	void train(ArrayList<T> input) {
@@ -24,6 +27,10 @@ public class Tree<T> {
 				root.addNode(theNewNode);
 			}
 		}
+		totalInputTokens = input.size() + totalInputTokens;
+		//sum the total tokens in the input here(totalInputTokens)--
+		//this is most easily done similarly to how we summed our total tokens 
+		//in the ProbabilityGenerator.root.pMinElimination( totalInputTokens, Pmin);
 	}
 	void print(String s) {
 	//calls the root to print

@@ -150,10 +150,11 @@ public class ProjectZeroMIDIMain extends PApplet {
 		OrderM<Double> rhythmsOrderM = new OrderM(2);
 		
 		// Project 5 - declaring our PST Tree
-		Tree<String> pstTreeOne = new Tree(3);
-		Tree<String> pstTreeTwo = new Tree(3);
-		Tree<String> pstTreeThree = new Tree(3);
-		Tree<Integer> pstTreePitches = new Tree (3);
+		Tree<String> pstTreeOne = new Tree(3,0.1f);
+		Tree<String> pstTreeTwo = new Tree(3,0.1f);
+		Tree<String> pstTreeThree = new Tree(3, 0.1f);
+		Tree<String> pstTreeFour = new Tree(3, 0.1f); //for testing AmIASuffix
+		Tree<Integer> pstTreePitches = new Tree (3, 0.1f);
 
 		// MidiNotesMary setup
 		MidiFileToNotes midiNotesMary; // read a midi file
@@ -188,9 +189,14 @@ public class ProjectZeroMIDIMain extends PApplet {
 		String[] thirdList = {"a","b","c","c","c","d","a","a","d","c","d","a","a","b","c","a","d","a","d"};
 		ArrayList<String> testThreeList = new ArrayList(Arrays.asList(thirdList)); 
 		
+		//for testing amIASuffix
+		String[] suffixTestOneList = {"c", "a", "d", "a", "b", "r", "a"};
+		ArrayList<String> testOneSuffixList = new ArrayList(Arrays.asList(suffixTestOneList)); 
+		
 		pstTreeOne.train(testOneList);
 		pstTreeTwo.train(testTwoList);
 		pstTreeThree.train(testThreeList);
+		pstTreeFour.train(testOneSuffixList); //for testing amIASuffix
 		pstTreePitches.train(midiNotesMary.getPitchArray());
 		
 		if (key == ' ') { 
@@ -272,7 +278,16 @@ public class ProjectZeroMIDIMain extends PApplet {
 			pstTreeOne.print("abracadabra: PST L=3");
 			pstTreeTwo.print("acadaacbda: PST L=3");
 			pstTreeThree.print("abcccdaadcdaabcadad: PST L=3");
+
+		} else if (key == '8') {
+			//testing amIaSuffix
+			Node<String> nodeOne = new Node(testOneList);
+			Node<String> nodeTwo = new Node(testTwoList); 
+			//the smaller node needs to call amIASuffix
+			System.out.println(nodeTwo.amIaSuffix(nodeOne)); //returns false
 			
+			Node<String> nodeThree = new Node(testOneSuffixList);
+			System.out.println(nodeThree.amIaSuffix(nodeOne)); //returns true
 		}
 }
 }
