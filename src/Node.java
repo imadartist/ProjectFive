@@ -7,8 +7,7 @@ public class Node<T> {
 	Node (ArrayList<T>newSequence) {
 	tokenSequence = newSequence;//set current sequence to the token sequence using a set function in the constructor as a parameter
 	}
-	boolean addNode(Node node) {
-		//	//Adds a child node. Will only add a child node if the input node contains this node as a suffix.
+	boolean addNode(Node node) { //Adds a child node. Will only add a child node if the input node contains this node as a suffix.
 		boolean found = false; // whether the node has been added or not yet
 		if (tokenSequence.equals(node.getTokenSequence())) { // if the tokenSequence of this node is the same as the
 			// token sequence of the added node use .equals to check this
@@ -38,24 +37,23 @@ public class Node<T> {
 
 	void print() {
 		System.out.println(tokenSequence); //prints the tokenSequence, then prints its children
-//		print the token sequence
-//		for each node in the children
-//		{
-//		node.print(1) //see the next function
-//		}
+		for (int i = 0; i < children.size(); i++) //for each node in the children
+		{
+//		node.print(1);//see the next function
+		}
 	}
+
 
 	void print(int numSpacesBefore) {
 		for (int i = 1; i < numSpacesBefore; i++) { // for 1 to numSpacesBefore
-		System.out.print(" "); //note: don’t use println because you don’t want a line
+		System.out.print(" "); 
 		}
-		System.out.println("-->");// print an arrow (-->) if you like, it will be clearer
+		System.out.println("-->");// print an arrow (-->) 
 		System.out.print(tokenSequence); //print the token
-//		for (int i = 0; i < children.size(); i++) //for each node in the children
-//		{
-//		//each time you call this from the next child the number of spaces will increase by 1
-//		node.print(numSpacesBefore + 1);
-//		}
+		for (int i = 0; i < children.size(); i++) //for each node in the children
+		{
+//		node.print(numSpacesBefore + 1);//each time you call this from the next child the number of spaces will increase by 1
+		}
 	}
 
 	ArrayList<T> getTokenSequence() {
@@ -70,13 +68,12 @@ public class Node<T> {
 		amI = node.getTokenSequence()
 				.subList(node.getTokenSequence().size() - tokenSequence.size(), node.getTokenSequence().size() - 1)
 				.equals(tokenSequence);
+		
 //  what happens when token size is 0 is not being accounted for...add an if statement what if when node.getTokenSequence().size() - tokenSequence.size() is 1-1
-//	Hint #1: using the sublist() method makes this much easier.
-//	Hint #2: note the difference between .equals() and ==.
+
 //	Hint #3: You MUST test this separately to make sure it works. That means calling it temporarily from the main
 //	class to make sure it works.
-//	Nothing in your Node adding will work if this is incorrect and you cannot simply
-//	assume it is correct if you haven’t tested it
+
 		return amI;
 	}
 }
