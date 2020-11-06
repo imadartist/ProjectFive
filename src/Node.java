@@ -20,21 +20,14 @@ public class Node<T> {
 			int i = 0;
 
 			while (i < children.size() && !found) {  // call.use a loop to go through children.
-				i++;
 				found = children.get(i).addNode(node) ;  // 1. try to add the node to all the children nodes. the pseudo recursive
-				
+				i++;
 
 			}
-			if (!found && (tokenSequence.size() == tokenSequence.size() - 1)) { // If NOT found and the length of node’s tokenSequence is one less than this tokenSequence
+			if (!found) { // If NOT found and the length of node’s tokenSequence is one less than this tokenSequence
 				children.add(node); // Add the node to our children array. Thus- found=true.
 				found = true;
 			}
-			
-			//IS THIS NECESSARY?
-			if (found) { // 2. Did one your child nodes add the node? **keep track of this via the found variable**
-				found = true; // if found set found to true found = true;
-			} 
-			
 			
 	
 		}
@@ -45,22 +38,26 @@ public class Node<T> {
 		System.out.println(tokenSequence); //prints the tokenSequence, then prints its children
 		for (int i = 0; i < children.size(); i++) //for each node in the children
 		{
-//		System.out.print();
-//		node.print(1);//see the next function
+			children.get(i).print(1);//see the next function
 		}
 	}
 
 
 	void print(int numSpacesBefore) {
+	
+
+
 		for (int i = 1; i < numSpacesBefore; i++) { // for 1 to numSpacesBefore
 		System.out.print(" "); 
 		}
-		System.out.println("-->");// print an arrow (-->) 
-		System.out.print(tokenSequence); //print the token
+		System.out.print("-->");// print an arrow (-->) 
+		System.out.println(tokenSequence); //print the token
 		for (int i = 0; i < children.size(); i++) //for each node in the children
 		{
-//		node.print(numSpacesBefore + 1);//each time you call this from the next child the number of spaces will increase by 1
+		children.get(i).print(numSpacesBefore + 1); //each time you call this from the next child the number of spaces will increase by 1
 		}
+		
+
 	}
 
 	ArrayList<T> getTokenSequence() {
@@ -79,31 +76,44 @@ public class Node<T> {
 		
 		if (tokenSequence.size() == 0) {
 			//do something to increase tokenSequence.size()? add a token?
-			amI = true;
+			amI = false;
 		}
 		if (node.getTokenSequence().size() - tokenSequence.size() == 0) { //  add an if statement for when node.getTokenSequence().size() - tokenSequence.size() is 1-1
-			amI = true;
+			amI = false;
 		}
 
 		return amI;
 	}
-	
-	boolean pMinElimination (int totalTokens, float pMin) {
+
+	boolean pMinElimination(int totalTokens, float pMin) {
 		boolean shouldRemove = false;
-		//performs elimination based on an empirical probability threshold PMin.
-		//Returns whether to delete this node or not. The parent node performs the deletion.Tree–
-//		1. find the number of times that the sequence could have occurred ( dependent on tokenSequence.size() )
-//		2. shouldRemove = empirical probability of the token sequence < pMin (note: handle the empty sequence/ root)
-//		shouldRemove = ( # of times the sequence occurs) /(input.size() –( tokenSequence.size() -1 ) < pMin;
-//		3. if we should NOT remove this node{
-//			for (int i = 0; i < children.size(); i++) //for each node (start from the end & go to the front of each array):
-//				call pMinElimination on all the children nodes
-//				if they return true (ie, we should remove the node)
-//				{
-//					then remove the entire node (which incl. its children)
-//					you may use the ArrayList method.remove()
-//					}
-//			}
+		float emProb = 0;
+		// performs elimination based on an empirical probability threshold PMin.
+		// Returns whether to delete this node or not. The parent node performs the
+		// deletion.Tree–
+		// 1. find the number of times that the sequence could have occurred ( dependent
+		// on tokenSequence.size() )
+			// this would be totalTokens/ tokenSequence.size() ;?
+		emProb =  count /(totalTokens - ( tokenSequence.size() -1 )); //cast as float
+		// 2. shouldRemove = empirical probability of the token sequence < pMin (note:
+		// handle the empty sequence/ root)
+		shouldRemove = emProb < pMin;
+		// 3. if we should NOT remove this node{
+		if (!shouldRemove) { //should i instead do !shouldRemove 
+		}
+
+		else { //should i instead do shouldRemove = true
+			for (int i = 0; i < children.size(); i--) // for each node (start from the end & go to the front of each
+														// array):
+														
+		
+			{
+//				use node or children?
+//				children.get(i).pMinElimination(); //call pMinElimination on all the children nodes if they return true (ie, we should remove the node)
+//				children.remove(); //then remove the entire node (which incl. its children) you may use the ArrayList method.remove()
+
+			}
+		}
 		return shouldRemove;
 	}
 }

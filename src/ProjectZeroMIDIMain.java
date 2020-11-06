@@ -95,12 +95,11 @@ public class ProjectZeroMIDIMain extends PApplet {
 				width / 4, height / 4 + 200);
 		text("Press 6 to start Project 2 Unit Test 3 (Generate & Print 10,000 20-Note Melodies using Markov Generator)",
 				width / 4, height / 4 + 250);
-		text("Press 7 to start Project 3 Unit Test 1 (Print the Order M Transition Tables for the Test Melody)",
+		text("Press 7 to start Project 5 Unit Test 1 (Print the Suffix Trees for 3 Strings and Mary Pitches)",
 				width / 4, height / 4 + 300);
-		text("Press 8 to start Project 3 Unit Test 2 (Generate & Print a 20-Note Melody using Test Melody and Order M Markov Generator)",
+		text("Press 8 to start Project 5 Unit Test 0 (Test the AmIaSuffix method in Node)",
 				width / 4, height / 4 + 350);
-		text("Press 9 to start Project 3 Unit Test 3 (Generate & Print 10,000 20-Note Melodies using Order M Markov Generator)",
-				width / 4, height / 4 + 400);
+
 
 	}
 
