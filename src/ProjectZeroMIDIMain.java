@@ -99,7 +99,8 @@ public class ProjectZeroMIDIMain extends PApplet {
 				width / 4, height / 4 + 300);
 		text("Press 8 to start Project 5 Unit Test 0 (Test the AmIaSuffix method in Node)",
 				width / 4, height / 4 + 350);
-
+		text("Press 9 to start Project 5 Unit Test 2 (P Elimination Trees)",
+				width / 4, height / 4 + 400);
 
 	}
 
@@ -153,6 +154,7 @@ public class ProjectZeroMIDIMain extends PApplet {
 		Tree<String> pstTreeTwo = new Tree(3,0.1f);
 		Tree<String> pstTreeThree = new Tree(3, 0.1f);
 		Tree<String> pstTreeFour = new Tree(3, 0.1f); //for testing AmIASuffix
+		Tree<String> pstTreeFive = new Tree(3, 0.1f);
 		Tree<Integer> pstTreePitches = new Tree (3, 0.1f);
 
 		// MidiNotesMary setup
@@ -195,7 +197,8 @@ public class ProjectZeroMIDIMain extends PApplet {
 		pstTreeOne.train(testOneList);
 		pstTreeTwo.train(testTwoList);
 		pstTreeThree.train(testThreeList);
-		pstTreeFour.train(testOneSuffixList); //for testing amIASuffix
+//		pstTreeFour.train(midiNotesMary.getPitchArray()); 
+		pstTreeFive.train(testOneSuffixList); //for testing amIASuffix
 		pstTreePitches.train(midiNotesMary.getPitchArray());
 		
 		if (key == ' ') { 
@@ -287,6 +290,8 @@ public class ProjectZeroMIDIMain extends PApplet {
 			
 			Node<String> nodeThree = new Node(testOneSuffixList);
 			System.out.println(nodeThree.amIaSuffix(nodeOne)); //returns true
+		} else if (key == '9') {
+			
 		}
 }
 }
