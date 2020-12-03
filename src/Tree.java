@@ -1,3 +1,10 @@
+/*
+ * Programmer: Madison Leyens
+ * Class: Tree
+ * Date: 12.3.2020
+ * Description: Tree Class that creates prediction suffix trees that all nodes are added to after being trained on inputed data
+ */
+
 import java.util.ArrayList;
 
 public class Tree<T> {
@@ -21,7 +28,6 @@ public class Tree<T> {
 			for (int j = 0; j < input.size() - (i - 1); j++) // index into the input
 			{
 				ArrayList<T> curSequence = new ArrayList(input.subList(j, i + j));
-				System.out.println(curSequence);
 
 				Node<T> theNewNode = new Node(curSequence);
 				root.addNode(theNewNode);
@@ -30,7 +36,8 @@ public class Tree<T> {
 		totalInputTokens = input.size() + totalInputTokens;
 		//sum the total tokens in the input here(totalInputTokens)--
 		//this is most easily done similarly to how we summed our total tokens 
-		//in the ProbabilityGenerator.root.pMinElimination( totalInputTokens, Pmin);
+		//in the ProbabilityGenerator
+		root.pMinElimination( totalInputTokens, pMin);
 	}
 	void print(String s) {
 	//calls the root to print

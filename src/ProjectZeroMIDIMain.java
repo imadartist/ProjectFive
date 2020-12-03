@@ -83,6 +83,7 @@ public class ProjectZeroMIDIMain extends PApplet {
 
 		textSize(12);
 		fill(0, 102, 153);
+		text ("Project 5: 1.5 P-Min Elimination Regrade (Thanks Nikita :)", width / 4, height/8);
 		text("Press 1 to start Project 1 Unit Test 1 (Print Probability Generator Probabilities)", width / 4,
 				height / 4);
 		text("Press 2 to start Project 1 Unit Test 2 (Generate & Print a 20-Note Melody using Probability Generator Probabilities)",
@@ -153,9 +154,11 @@ public class ProjectZeroMIDIMain extends PApplet {
 		Tree<String> pstTreeOne = new Tree(3,0.1f);
 		Tree<String> pstTreeTwo = new Tree(3,0.1f);
 		Tree<String> pstTreeThree = new Tree(3, 0.1f);
-		Tree<String> pstTreeFour = new Tree(3, 0.1f); //for testing AmIASuffix
-		Tree<String> pstTreeFive = new Tree(3, 0.1f);
-		Tree<Integer> pstTreePitches = new Tree (3, 0.1f);
+		Tree<Integer> pstTreePitchesOne = new Tree (3, 0.1f);
+		Tree<String> pstTreeFour = new Tree(3, 0.15f); 
+		Tree<String> pstTreeFive = new Tree(3, 0.15f);
+		Tree<String> pstTreeSix = new Tree(3, 0.15f);
+		Tree<Integer> pstTreePitchesTwo = new Tree (3, 0.15f);
 
 		// MidiNotesMary setup
 		MidiFileToNotes midiNotesMary; // read a midi file
@@ -197,9 +200,12 @@ public class ProjectZeroMIDIMain extends PApplet {
 		pstTreeOne.train(testOneList);
 		pstTreeTwo.train(testTwoList);
 		pstTreeThree.train(testThreeList);
-//		pstTreeFour.train(midiNotesMary.getPitchArray()); 
-		pstTreeFive.train(testOneSuffixList); //for testing amIASuffix
-		pstTreePitches.train(midiNotesMary.getPitchArray());
+		pstTreePitchesOne.train(midiNotesMary.getPitchArray());
+		pstTreeFour.train(testOneList);
+		pstTreeFive.train(testTwoList);
+		pstTreeSix.train(testThreeList);
+		pstTreePitchesTwo.train(midiNotesMary.getPitchArray());
+		
 		
 		if (key == ' ') { 
 			player.reset();
@@ -291,7 +297,16 @@ public class ProjectZeroMIDIMain extends PApplet {
 			Node<String> nodeThree = new Node(testOneSuffixList);
 			System.out.println(nodeThree.amIaSuffix(nodeOne)); //returns true
 		} else if (key == '9') {
-			
+			//running pMinElimination on prediction suffix trees
+
+			pstTreeOne.print("abracadabra: PST L=3; P-MIN=0.1");
+			pstTreeTwo.print("acadaacbda: PST L=3; P-MIN=0.1");
+			pstTreeThree.print("abcccdaadcdaabcadad: PST L=3; P-MIN=0.1");
+			pstTreePitchesOne.print("Mary Had a Little Lamb: PST L=3; P-MIN=0.1");
+			pstTreeFour.print("abracadabra: PST L=3; P-MIN=0.15");
+			pstTreeFive.print("acadaacbda: PST L=3; P-MIN=0.15");
+			pstTreeSix.print("abcccdaadcdaabcadad: PST L=3; P-MIN=0.15");
+			pstTreePitchesTwo.print("Mary Had a Little Lamb: PST L=3; P-MIN=0.15");
 		}
 }
 }
