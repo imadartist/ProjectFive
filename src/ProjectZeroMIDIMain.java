@@ -3,7 +3,7 @@
  * Programmer: Madison Leyens
  * Class: ProjectZeroMIDIMain
  * Date: 9.15.2020
- * Description: Main Class that holds all unit tests
+ * Description: Main Class that holds all unit tests. Final Commit 12/5
  */
 import processing.core.*;
 
