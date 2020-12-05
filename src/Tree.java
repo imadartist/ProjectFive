@@ -12,7 +12,7 @@ public class Tree<T> {
 
 	Node<T> root = new Node(new ArrayList<T>()); //the root of the tree
 	int tree; //declare tree as a global variable
-	float pMin;
+	float pMin; //user inputed pmin value to be compared to empirical probability of tokens
 	int totalInputTokens; //the total number of input tokens
 	
 	Tree(int L, float E) {
